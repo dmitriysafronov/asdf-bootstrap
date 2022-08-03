@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+test -n "${BASH_VERSION}" || \
+  ( echo 'Not bash shell! Can not work!' && exit 1 )
+
+test -z "${ASDF_DEBUG}" || set -x
+
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
+if [ -s .tool-versions ]; then
+  echo "Installing plugins..."
+  asdf plugin-list-all > /dev/null 2>&1
+  for plugin in $(cat .tool-versions | grep -v '^[[:space:]]*#' | cut -s -d ' ' -f 1); do
+    if [ -n "$(asdf plugin-list | grep -w ^$plugin)" ]; then
+      echo "= $plugin: already installed"
+    else
+      if [ -n "$(ls -1 "$HOME/.asdf/repository/plugins" | grep -w $plugin)" ]; then
+          echo "+ $plugin: installing"
+          asdf plugin-add $plugin
+      else
+        echo "- $plugin: not found"
+      fi
+    fi
+  done
+  echo "Installing tools..."
+  asdf install
+else
+  echo "No [.tool-versions] file detected. Can't bootstrap."
+  exit 1
+fi
