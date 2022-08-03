@@ -11,7 +11,7 @@ source "$HOME/.asdf/completions/asdf.bash"
 if [ -s .tool-versions ]; then
   echo "Installing plugins..."
   asdf plugin-list-all > /dev/null 2>&1
-  for plugin in $(cat .tool-versions | grep -v '^[[:space:]]*#' | cut -s -d ' ' -f 1); do
+  for plugin in $(grep -v '^[[:space:]]*#' .tool-versions | cut -s -d ' ' -f 1); do
     if [ -n "$(asdf plugin-list | grep -w ^$plugin)" ]; then
       echo "= $plugin: already installed"
     else
