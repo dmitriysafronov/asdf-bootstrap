@@ -23,6 +23,8 @@ if [ -s .tool-versions ]; then
       fi
     fi
   done
+  echo "Updating plugins to latest versions..."
+  asdf plugin update --all
   echo "Installing tools..."
   asdf install
 else
