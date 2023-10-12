@@ -23,12 +23,8 @@ if [ -s .tool-versions ]; then
       fi
     fi
   done
-  echo "Updating plugins to latest versions..."
-  asdf plugin update --all
   echo "Installing tools..."
   asdf install
-  echo "Checking for updated tools..."
-  asdf latest --all
 else
   echo "No [.tool-versions] file detected. Can't bootstrap."
   exit 1

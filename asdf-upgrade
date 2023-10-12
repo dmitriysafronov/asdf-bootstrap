@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+test -n "${BASH_VERSION}" || \
+  ( echo 'Not bash shell! Can not work!' && exit 1 )
+
+test -z "${ASDF_DEBUG}" || set -x
+
+source "$HOME/.asdf/asdf.sh"
+source "$HOME/.asdf/completions/asdf.bash"
+
+if [ -s .tool-versions ]; then
+  echo "Updating plugins to latest versions..."
+  asdf plugin update --all
+  echo "Checking for updated tools..."
+  asdf latest --all
+else
+  echo "No [.tool-versions] file detected. Can't upgrade."
+  exit 1
+fi
