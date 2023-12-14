@@ -14,8 +14,3 @@ jobs:
           fail_on_error: true
           path: "."
           pattern: "asdf-*"
-          # exclude: |
-          #   "./.git/*"
-          #   "./.github/*"
-          #   "./README.md"
-          check_all_files_with_shebangs: "false"
