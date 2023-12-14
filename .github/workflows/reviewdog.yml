@@ -12,5 +12,9 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           path: "."
-          exclude: "./.git/*"
-          check_all_files_with_shebangs: "true"
+          pattern: "*"
+          exclude: |
+            "./.git/*"
+            "./.github/*"
+            "./README.md"
+          check_all_files_with_shebangs: "false"
