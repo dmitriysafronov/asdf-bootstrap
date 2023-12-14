@@ -14,6 +14,6 @@ if [ -s .tool-versions ]; then
   echo "Checking for updated tools..."
   asdf latest --all
 else
-  echo "No [.tool-versions] file detected. Can't upgrade."
+  echo "No [.tool-versions] file detected. Can't update."
   exit 1
 fi
