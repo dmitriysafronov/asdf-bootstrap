@@ -5,9 +5,6 @@ test -n "${BASH_VERSION}" || \
 
 test -z "${ASDF_DEBUG}" || set -x
 
-source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
-
 if [ -s .tool-versions ]; then
   echo "Updating plugins to latest versions..."
   asdf plugin update --all
