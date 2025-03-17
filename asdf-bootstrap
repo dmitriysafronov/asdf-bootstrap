@@ -5,9 +5,6 @@ test -n "${BASH_VERSION}" || \
 
 test -z "${ASDF_DEBUG}" || set -x
 
-source "$HOME/.asdf/asdf.sh"
-source "$HOME/.asdf/completions/asdf.bash"
-
 if [ -s .tool-versions ]; then
   echo "Installing plugins..."
   asdf plugin-list-all > /dev/null 2>&1
