@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Rebase all Dependabot's pull requests on every push to the main branch"
-        uses: bbeesley/gha-auto-dependabot-rebase@v1.5.129
+        uses: bbeesley/gha-auto-dependabot-rebase@v1.5.137
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
       - name: "Rebase all users' pull requests on release push to the main branch"
